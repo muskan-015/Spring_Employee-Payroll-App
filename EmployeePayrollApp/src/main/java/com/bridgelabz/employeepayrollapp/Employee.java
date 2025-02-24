@@ -23,4 +23,6 @@ public class Employee {
 
     @Min(value = 10000, message = "Salary must be at least 10,000")
     private double salary;
+
+
 }
