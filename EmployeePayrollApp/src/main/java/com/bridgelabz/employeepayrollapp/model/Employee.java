@@ -1,4 +1,4 @@
-package com.bridgelabz.employeepayrollapp;
+package com.bridgelabz.employeepayrollapp.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

@@ -1,11 +1,13 @@
-package com.bridgelabz.employeepayrollapp;
+package com.bridgelabz.employeepayrollapp.controller;
+import com.bridgelabz.employeepayrollapp.dto.EmployeeDTO;
+import com.bridgelabz.employeepayrollapp.model.Employee;
+import com.bridgelabz.employeepayrollapp.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/employees")
@@ -52,6 +54,12 @@ public class EmployeeController {
         return employeeService.deleteEmployee(id) ?
                 ResponseEntity.ok("Employee deleted successfully!") :
                 ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<Employee> addEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        Employee newEmployee = employeeService.addEmployee(employeeDTO);
+        return ResponseEntity.ok(newEmployee);
     }
 
 

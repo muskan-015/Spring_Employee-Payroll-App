@@ -1,5 +1,8 @@
-package com.bridgelabz.employeepayrollapp;
+package com.bridgelabz.employeepayrollapp.service;
 
+import com.bridgelabz.employeepayrollapp.dto.EmployeeDTO;
+import com.bridgelabz.employeepayrollapp.model.Employee;
+import com.bridgelabz.employeepayrollapp.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -42,6 +45,10 @@ public class EmployeeService {
             return true;
         }
         return false;
+    }
+    public Employee addEmployee(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee(null,employeeDTO.getName(), employeeDTO.getDepartment(), employeeDTO.getSalary());
+        return employeeRepository.save(employee);
     }
 
 
