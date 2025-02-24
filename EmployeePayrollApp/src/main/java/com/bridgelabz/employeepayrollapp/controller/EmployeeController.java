@@ -61,7 +61,11 @@ public class EmployeeController {
         Employee newEmployee = employeeService.addEmployee(employeeDTO);
         return ResponseEntity.ok(newEmployee);
     }
-
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
+        Employee updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
+        return (updatedEmployee != null) ? ResponseEntity.ok(updatedEmployee) : ResponseEntity.notFound().build();
+    }
 
 }
 
