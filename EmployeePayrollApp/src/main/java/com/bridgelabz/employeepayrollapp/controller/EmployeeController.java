@@ -108,5 +108,10 @@ public class EmployeeController {
         return employeeService.deleteEmployee(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/{id}/exceptionhandler")
+    public EmployeeDTO getEmployee(@PathVariable int id) {
+        return employeeService.getEmployeeById(id);
+    }
+
 }
 

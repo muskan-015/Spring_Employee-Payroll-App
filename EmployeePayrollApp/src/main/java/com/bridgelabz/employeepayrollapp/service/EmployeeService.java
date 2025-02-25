@@ -1,15 +1,15 @@
 package com.bridgelabz.employeepayrollapp.service;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeeDTO;
+import com.bridgelabz.employeepayrollapp.exceptionhandler.EmployeeNotFoundException;
 import com.bridgelabz.employeepayrollapp.model.Employee;
 import com.bridgelabz.employeepayrollapp.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 @Slf4j //enables logging
 @Service
 public class EmployeeService {
@@ -127,6 +127,18 @@ public class EmployeeService {
         return removed;
     }
 
+    private Map<Integer, EmployeeDTO> employeeData = new HashMap<>();
+
+    public EmployeeDTO getEmployeeById(int id) {
+        if (!employeeData.containsKey(id)) {
+            throw new EmployeeNotFoundException("Employee with ID " + id + " not found.");
+        }
+        return employeeData.get(id);
+    }
+
+    public void addEmployee(int id, EmployeeDTO employee) {
+        employeeData.put(id, employee);
+    }
 
 }
 
