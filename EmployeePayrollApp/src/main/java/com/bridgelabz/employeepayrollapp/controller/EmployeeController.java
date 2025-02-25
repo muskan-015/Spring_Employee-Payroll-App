@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping("/employees")
+@Validated
 public class EmployeeController {
 
     private final EmployeeService employeeService;
