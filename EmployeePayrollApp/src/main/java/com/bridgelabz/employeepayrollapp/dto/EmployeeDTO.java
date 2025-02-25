@@ -1,5 +1,5 @@
 package com.bridgelabz.employeepayrollapp.dto;
-
+//lombok library to auto generate getters and setters
 import lombok.Data;
 
 @Data
