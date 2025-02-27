@@ -67,6 +67,7 @@ public class EmployeeController {
         Employee newEmployee = employeeService.addEmployee(employeeDTO);
         return ResponseEntity.ok(newEmployee);
     }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
         Employee updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
@@ -140,7 +141,6 @@ public class EmployeeController {
         log.info("Fetching employee with ID: {}", id);
         return employeeService.getEmployeeById(id);
     }
-
 
 }
 
