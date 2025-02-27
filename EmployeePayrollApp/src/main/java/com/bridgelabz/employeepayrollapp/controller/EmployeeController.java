@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -112,6 +113,18 @@ public class EmployeeController {
     public EmployeeDTO getEmployee(@PathVariable int id) {
         return employeeService.getEmployeeById(id);
     }
+    @PostMapping("/add/new")
+    public String addAEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        long id = new Random().nextLong(1000);
+        employeeService.addEmployee((int) id, employeeDTO);
+        return "Employee added with ID: " + id;
+    }
+
+    @GetMapping("/{id}/new")
+    public Optional<Employee> getAEmployee(@PathVariable long id) {
+        return employeeService.getEmployeeById(id);
+    }
+
 
 }
 

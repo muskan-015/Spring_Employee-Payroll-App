@@ -51,7 +51,7 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(EmployeeDTO employeeDTO) {
-        Employee employee = new Employee(null,employeeDTO.getName(), employeeDTO.getDepartment(), employeeDTO.getSalary());
+        Employee employee = new Employee(employeeDTO.getName(), employeeDTO.getDepartment(), employeeDTO.getSalary());
         return employeeRepository.save(employee);
     }
 
@@ -136,9 +136,26 @@ public class EmployeeService {
         return employeeData.get(id);
     }
 
-    public void addEmployee(int id, EmployeeDTO employee) {
+    public void addemployee(int id, EmployeeDTO employee) {
         employeeData.put(id, employee);
     }
 
+    private Map<Integer, Employee> EmployeeData = new HashMap<>();
+
+
+
+    public void addEmployee(int id, EmployeeDTO employeeDTO) {
+        Employee employee = new Employee(
+                (long)id,
+                employeeDTO.getName(),
+                employeeDTO.getSalary(),
+                employeeDTO.getGender(),
+                employeeDTO.getStartDate(),
+                employeeDTO.getNote(),
+                employeeDTO.getProfilePic(),
+                employeeDTO.getDepartment()
+        );
+        EmployeeData.put(id, employee);
+    }
 }
 
