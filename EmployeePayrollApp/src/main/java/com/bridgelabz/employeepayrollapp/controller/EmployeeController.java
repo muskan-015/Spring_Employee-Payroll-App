@@ -2,6 +2,7 @@ package com.bridgelabz.employeepayrollapp.controller;
 import com.bridgelabz.employeepayrollapp.dto.EmployeeDTO;
 import com.bridgelabz.employeepayrollapp.model.Employee;
 import com.bridgelabz.employeepayrollapp.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -125,6 +126,19 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
+    @PostMapping("/add/newlog")
+    public String addEmployeee(@Valid @RequestBody EmployeeDTO employeeDTO) {
+        log.info("Received request to add employee: {}", employeeDTO);
+        int id = employeeService.addEmployeee(employeeDTO); // Ensure this is valid
+        log.info("Employee added successfully with ID: {}", id);
+        return "Employee added with ID: " + id;
+    }
 
+
+    @GetMapping("/{id}/newlog")
+    public EmployeeDTO getemployee(@PathVariable int id) {
+        log.info("Fetching employee with ID: {}", id);
+        return employeeService.getEmployeeById(id);
+    }
 }
 

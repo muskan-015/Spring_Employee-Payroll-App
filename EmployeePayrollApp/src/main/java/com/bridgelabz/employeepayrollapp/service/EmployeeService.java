@@ -157,5 +157,12 @@ public class EmployeeService {
         );
         EmployeeData.put(id, employee);
     }
+
+    public int addEmployeee(EmployeeDTO employeeDTO) {
+        int id = new Random().nextInt(1000); // Generate random ID
+        employeeData.put(id, employeeDTO);
+        log.info("Employee stored with ID: {} | Data: {}", id, employeeDTO);
+        return id; // Ensure it returns an integer
+    }
 }
 
